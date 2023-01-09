@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addPizza, currentPizzaSelector } from '../../redux/slices/basketSlice';
 
-const PizzaCard = ({ title, price, imageUrl, sizes, types, id}) => {
-  const [activeTab, setActiveTab] = useState({ size: 0, type: types[0] }); 
+const PizzaCard = ({ title, price, imageUrl, sizes, types, id }) => {
+  const [activeTab, setActiveTab] = useState({ size: 0, type: types[0] });
   const dispatch = useDispatch();
   const typeDough = ['тонкое', 'традиционное'];
   const currentPizza = useSelector(currentPizzaSelector(id));
@@ -24,8 +25,10 @@ const PizzaCard = ({ title, price, imageUrl, sizes, types, id}) => {
 
   return (
     <div className="pizza-block">
-      <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
-      <h4 className="pizza-block__title">{title}</h4>
+      <Link to={`/pizza/${id}`}>
+        <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+        <h4 className="pizza-block__title">{title}</h4>
+      </Link>
       <div className="pizza-block__selector">
         <ul>
           {types.map((typeId) => (
@@ -68,6 +71,6 @@ const PizzaCard = ({ title, price, imageUrl, sizes, types, id}) => {
       </div>
     </div>
   );
-}
+};
 
 export default PizzaCard;

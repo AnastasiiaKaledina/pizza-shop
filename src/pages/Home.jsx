@@ -78,11 +78,7 @@ export const Home = () => {
         <div className="content__items">
           {status === 'loading'
             ? [...new Array(6)].map((_, index) => <MyLoader key={index} />)
-            : sortedPizzas.map((pizza) => (
-                <Link key={pizza.title} to={`/pizza/${pizza.id}`}>
-                  <PizzaCard {...pizza} />
-                </Link>
-              ))}
+            : sortedPizzas.map((pizza) => <PizzaCard key={pizza.title} {...pizza} />)}
         </div>
       )}
       <Pagination setPageNumber={setPageNumber} pageNumber={pageNumber} />
