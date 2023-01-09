@@ -1,0 +1,39 @@
+@import '../../scss/variables';
+
+.wrapper {
+   margin-top: 40px;
+   margin-bottom: 15px;
+   li {
+      display: inline-flex;
+
+      a {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         color: $orange;
+         width: 40px;
+         height: 40px;
+         border: 1px solid $orange;
+         border-radius: 100px;
+         margin-right: 10px;
+         cursor: pointer;
+         &:hover {
+            color: white;
+            background-color: $orange;
+         }
+         
+         &:active {
+            transform: translateY(2px);
+         }
+      }
+   }
+
+   :global {
+      .selected {
+         a {
+            color: white;
+            background-color: $orange;
+         }
+      }
+   }
+}
